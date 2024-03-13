@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    {{ title }} | {{ 'Кейсы' }}
+{% endblock %}
+
+{% block content %}
+{% if posts %}
+    {% for post in posts %}
+    <article class="blog-post">
+        <p class="blog-post-meta"><a href="{% url 'post' post.id %}"><h1>{{ post.name }}</h1></a></p>
+        <p>{{ post.description }}</p>
+        <div class="col-auto d-none d-lg-block ">
+            <img width="250" height="300" src="{{ post.picture.url }}">
+        </div>
+        <hr>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

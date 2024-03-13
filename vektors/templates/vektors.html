@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{% block content %}
+<main>
+  <div class="container col-xxl-8 px-4 py-5 ">
+    <div class="row flex-lg-row-reverse align-items-center">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="https://ic.pics.livejournal.com/vse_horosho/2981827/731723/731723_600.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Сайт о векторной системе Виктора Толкачева</h1>
+        <p class="lead">в прочтении Екатерины Дикерман, которая обучалась у него в 2011 году</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          {% comment %} <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a href="{% url 'about' %}">Обо мне</button> {% endcomment %}
+            {% comment %} <li class="btn btn-link rounded-pill px-3"><a href="{% url 'about' %}">Обо мне</a></li> {% endcomment %}
+          <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button">
+          Купить курс ???
+          <svg class="bi ms-1" width="20" height="20"><use xlink:href="#arrow-right-short"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+    <div class="d-grid gap-2">
+      <button class="btn btn-outline-secondary" type="button">Купить курс ???</button>
+    </div>
+  </div>
+
+  
+  <main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="row">
+          <h4 class="display-6 text-center">Несколько слов о системе</h4>
+          <div class="col">
+            <div class="mr-auto">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/fFO86I405Xc?si=fLbMqSAEnm2_m1PM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col">Это система о том, что с одной стороны люди живут стаей и эффективно выживают, когда заняты все 8 видовых ролей (вождь, советник вождя, шут, воин, мудрец и т.д). А с другой стороны о том, что эти роли предопределены врожденным ведущим анализаторов (уши, нос, глаза, рот, кожа и т.д.) В самом деле охраннику нужны глаза, которые лучше других видят, советнику нос - который больше всех чует, ну а воину - мышцы, от напряжения которых он будет получать удовольствие. Вот о поиске своей видовой роли через свой ведущий анализатор этот курс. А анализатор, к слову сказать, определяет и тип телосложения и характер и склонность к профессии и даже то, как человек будет выбирать себе сексуального партнера</div>
+        </div>
+      </div>
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <h1 class="display-5 fw-bold text-dark text-center">Кейсы</h1>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col">
+                <img src="http://127.0.0.1:8000/media/media/upload/750259_600.jpg" class="d-block w-100" width="auto" height="500">
+              </div>
+              <div class="col">У каждого из нас 8 органов чувств. Один из них ВРОЖДЕННО является ведущим. И это определяет не только характер и телосложение, но и выбор профессии, особенности здоровья и даже предпочтения в сексе. А в первобытной стае это определяло еще и статус и роль в этой самой стае. Узнай, кем бы ты был в первобытной стае, кем можешь быть сейчас. На какие свершения одарен природой. И какие опасности могут подстерегать. Узнаешь свою природу – узнаешь и себя!</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col">
+                <img src="http://127.0.0.1:8000/media/media/upload/732246_600.jpg" class="d-block w-100" width="auto" height="500">
+              </div>
+              <div class="col">Мы вчера посмотрели на то, какие роли нужны для выживания стаи и то, активность каких анализаторов (эрогенных зон, органов чувств) может это обеспечить. Ну вот то самое, что хорошему вождю нужно врожденное свойство отдавать, что и свойственно физиологии уретры (отдача наружу). А воину нужна выносливость и удовольствие от длительного напряжения мышц. Дневному охраннику стаи нужны глаза, которые смогут различить хищника, затаившегося в кустах, а ночью глаза для охраны бесполезны - нужны уши. И так далее. И начали уже разбирать первый вектор – Кожный.</div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Следующий</span>
+        </button>
+    </div>
+
+    <div class="row mb-2">
+      <h1 class="display-5 fw-bold text-dark text-center">Отзывы</h1>
+      <div class="col-md-6">
+        <div class="col p-4 d-flex flex-column position-static">
+          <p p class="text-xl-start">Не знаю хватит ли мне словарного запаса, чтобы выразить всю благодарность за новую меня, которая родилась за 9 месяцев обучения в мастерской ТАРО, я попробую. Для меня это не просто очередной курс и новые знания, это мое новое мировоззрение, новые способы думать и принимать конструктивные решения, это новая система ценностей, которая формирует теперь каркас моего взаимодействия с миром. Спасибо Катя за твое терпение и выдержку, за твою мудрость, которой ты так щедро с нами делилась. Спасибо зак комфортную атмосферу в мастерской, за яркие примеры, за твои вопросы, комментарии, материалы.</p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a class="btn btn-dark" href="http://127.0.0.1:8000/vektors/feedback/2/" role="button">Читать дальше</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="col p-4 d-flex flex-column position-static">
+          <p p class="text-xl-start">Пишу кратко, потому что в одной руке бутылка с молоком, а на руках маленький сынишка, который родился, на Равновесии. Кто не в курсе это XIV старший аркан Таро. Открою тайну, девять месяцев обучения и в итоге действительно сбывается мечта: здоровый, веселый малыш. С этим желанием я пришла на Мастерскую Таро. Параллельно огромное количество новой информации, осмысления, внутренней работы, ярких переживаний, ну и просто жизни с Таро. Это как попробовав раз уже вернуться назад не хочешь, да и просто не получится, восприятие жизни меняется. Благодарю отдельно всю группу, за поддержку и обмен энергиями. Катерина, дарю Благо!</p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a class="btn btn-dark" href="http://127.0.0.1:8000/vektors/feedback/3/" role="button">Читать дальше</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+      <h1 class="display-5 fw-bold text-white">Купить курс</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Купить курс можно в трех вариантах: basic, classic и VIP</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-outline-light btn-lg px-4">Купить</button>
+        </div>
+      </div>
+  </div>
+{% endblock %}

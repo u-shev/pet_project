@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    {{ title }} | {{ 'Отзывы' }}
+{% endblock %}
+
+{% block content %}
+{% if feedback_posts %}
+{% for feedback_post in feedback_posts %}
+<article class="blog-post">
+    <p class="blog-post-meta">Автор отзыва: {{ feedback_post.name }}</a></p>
+    <p>{{ feedback_post.description }}</p>
+    <hr>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

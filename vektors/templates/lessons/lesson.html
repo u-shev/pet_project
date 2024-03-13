@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+
+{% block content %}
+<article class="blog-post">
+    <h2>{{ lesson.name }}</h2>
+    <div class="mr-auto">
+        <iframe width="330" height="200"
+          src={{ lesson.video_link }}
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    <p>{{ lesson.description }}</p>
+    <div class="col-auto d-none d-lg-block ">
+      <img width="250" height="300" src="{{ lesson.picture.url }}">
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

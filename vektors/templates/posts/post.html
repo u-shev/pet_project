@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    {{ title }} | {{ 'Кейс' }}
+{% endblock %}
+
+{% block content %}
+<article class="blog-post">
+    <h2>{{ post.name }}</h2>
+
+    <p>{{ post.description }}</p>
+    <div class="col-auto d-none d-lg-block ">
+      <img width="250" height="300" src="{{ post.picture.url }}">
+    </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

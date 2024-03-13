@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    {{ title }} | {{ 'Мой отзыв' }}
+{% endblock %}
+
+{% block content %}
+<article class="blog-post">
+    <p class="blog-post-meta">Автор отзыва: {{ feedback_post.name }}</a></p>
+
+    <p>{{ feedback_post.description }}</p>
+    <hr>
+
+      {% if user.is_authenticated and user == feedback_post.author %}
+      <div class="row p-1">
+        <div class="col">
+          <a href="{% url 'update_feedback_post' feedback_post.id %}">{{ 'Обновить' }}</a>
+            <br>
+          <a href="{% url 'delete_feedback_post' feedback_post.id %}">{{ 'Удалить' }}</a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
