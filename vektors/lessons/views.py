@@ -1,15 +1,18 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, \
-    UpdateView, DeleteView, DetailView, TemplateView
+    UpdateView, DeleteView, DetailView, ListView
 from django.contrib.messages.views import SuccessMessageMixin
 from vektors.mixins import UserLoginRequiredMixin
-from .models import Lesson
+from .models import *
 from .forms import LessonForm
 
 
-class IndexLessonsView(UserLoginRequiredMixin, TemplateView):
+class IndexLessonsView(UserLoginRequiredMixin, ListView):
     template_name = 'lessons/index.html'
+    model = Lesson
+    context_object_name = 'lessons'
     extra_context = {'title': 'ВекторА'}
+
 
 
 class LessonCreateView(UserLoginRequiredMixin,

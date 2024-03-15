@@ -14,7 +14,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '0.0.0.0',
-    '90.156.225.192'
+    '90.156.225.192',
+    'dikerman.ru'
 ]
 
 INSTALLED_APPS = [
@@ -28,13 +29,11 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
 
     'django_bootstrap5',
-    'debug_toolbar',
     'cachalot',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.mailru',
     'allauth.socialaccount.providers.telegram',
     # 'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.yandex',
@@ -60,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'vektors.urls'
@@ -161,12 +159,19 @@ LOGIN_URL = '/login/'
 CSRF_TRUSTED_ORIGINS = [
     'https://127.0.0.1',
     'https://localhost',
-    'https://90.156.225.192',
-
+    'https://90.156.225.192:8000',
+    'https://dikerman.ru:8000'
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': "django_redis.cache.RedisCache",
+        'LOCATION': 'redis://redis:6379/1',
+    }
+}
+
 SOCIALACCOUNT_PROVIDERS = {
-    'telegram': {
+    'yandex': {
         'SCOPE': {
             'profile',
             'email',

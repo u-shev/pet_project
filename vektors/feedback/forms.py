@@ -6,4 +6,4 @@ class FeedbackPostForm(forms.ModelForm):
 
     class Meta:
         model = FeedbackPost
-        fields = ('author', 'description')
+        fields = ('name', 'description')

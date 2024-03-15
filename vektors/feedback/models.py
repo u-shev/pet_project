@@ -3,6 +3,8 @@ from users.models import User
 
 
 class FeedbackPost(models.Model):
+    name = models.CharField(max_length=150, blank=False,
+                            verbose_name='Имя автора')
     description = models.TextField(blank=True,
                                    verbose_name='Отзыв')
     author = models.ForeignKey(User, on_delete=models.PROTECT,
@@ -10,7 +12,7 @@ class FeedbackPost(models.Model):
                                verbose_name='автор')
 
     def __str__(self):
-        return self.id
+        return self.name
 
     class Meta:
         verbose_name = 'Отзыв'

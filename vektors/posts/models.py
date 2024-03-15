@@ -19,3 +19,14 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Кейс'
         verbose_name_plural = 'Кейсы'
+
+
+class Picture(models.Model):
+    name = models.CharField(max_length=150, blank=False,
+                            verbose_name='Название')
+    picture = models.FileField(upload_to='media/upload/main/',
+                               verbose_name='Выберите картинку')
+    
+    class Meta:
+        verbose_name = 'Картинка для оформления'
+        verbose_name_plural = 'Картинки для оформления'

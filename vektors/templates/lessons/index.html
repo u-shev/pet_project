@@ -7,85 +7,15 @@
 
 {% block content %}
 
-{% comment %} <div class="container px-4 py-5" id="custom-cards">
-    <h2 class="pb-2 border-bottom">Курс</h2> {% endcomment %}
-
 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
+{% for lesson in lessons %}
+  <a class="col" href="{% url 'lesson' lesson.id %}">
+    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('{{ lesson.pictures.url }}');">
       <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Вводная часть</h3>
+        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{ lesson.name }}</h3>
       </div>
     </div>
-  </div>
+  </a>
+  {% endfor %}
 
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Первый вектор</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Второй вектор</h3>
-        <a href="{% url 'posts' %}" class="stretched-link"></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Третий</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Первый вектор</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Второй вектор</h3>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Вводная часть</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Первый вектор</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('http://127.0.0.1:8000/media/media/upload/732246_600.jpg');">
-      <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Второй вектор</h3>
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock %}
+  {% endblock %}

@@ -4,6 +4,7 @@ celerybeat-schedule
 /__pycache__
 .venv/
 vektors/__pycache__/
+vektors/mediafiles/
 vektors/.env
 dist/
 __pycache__
