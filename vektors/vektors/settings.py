@@ -14,7 +14,6 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '0.0.0.0',
-    '90.156.225.192',
     'dikerman.ru'
 ]
 
@@ -34,8 +33,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.telegram',
-    # 'allauth.socialaccount.providers.vk',
+    # 'allauth.socialaccount.providers.telegram',
+    'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.yandex',
 
     'posts',
@@ -154,8 +153,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/login/'
-
 CSRF_TRUSTED_ORIGINS = [
     'https://127.0.0.1',
     'https://localhost',
@@ -170,19 +167,45 @@ CACHES = {
     }
 }
 
-SOCIALACCOUNT_PROVIDERS = {
-    'yandex': {
-        'SCOPE': {
-            'profile',
-            'email',
-        }
-    },
-    'telegram': {
-        'SCOPE': {
-            'profile',
-            'email',
-        }
-    }
-}
+# ALLAUTH НАСТРОЙКИ
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = 'course'
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'yandex': {
+#         'SCOPE': {
+#             'profile',
+#             'email',
+#         }
+#     },
+#     'telegram': {
+#         'SCOPE': {
+#             'profile',
+#             'email',
+#         }
+#     }
+# }
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
+
+#CELERY И РАССЫЛКА ПИСЕМ
+
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+
+EMAIL_HOST ='smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

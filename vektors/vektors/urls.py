@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import *
-from django.conf import settings
-from django.conf.urls.static import static
+# from django.conf import settings
+# from django.conf.urls.static import static
 from vektors import views
 
 
@@ -11,8 +11,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', HomeView.as_view(), name='home'),
     path('vektors/', VektorsView.as_view(), name='vektors'),
-    path('login/', UserLoginView.as_view(), name="account_login"),
-    path('logout/', views.UserLogoutView.as_view(), name='account_logout'),
     path('buy/', views.BuyView.as_view(), name='buy'),
     path('vektors/about', VektorsAboutView.as_view(), name='vektors_about'),
 
@@ -21,5 +19,5 @@ urlpatterns = [
     path('vektors/course/', include('lessons.urls'), name='course'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

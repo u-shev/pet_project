@@ -31,6 +31,17 @@ services:
     image: redis:7.0.5
     hostname: redis
 
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - media:/vektors/mediafiles
+      - static:/vektors/staticfiles
+    depends_on:
+      - web
+
 volumes:
   postgres-data:
   static:
