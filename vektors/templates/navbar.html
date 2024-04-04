@@ -1,5 +1,4 @@
 {% load django_bootstrap5 %}
-{% load socialaccount %}
 
 {% block content %}
 <header class="blog-header py-3">
@@ -19,16 +18,22 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav flex-grow-1 justify-content-between">
+            <li class="nav-item"><a class="nav-link" href="{% url 'vektors' %}">ВекторА</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'vektors_about' %}">О системе</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'course_about' %}">О курсе</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Обо мне</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'buy' %}">Купить курс</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'feedback_posts' %}">Отзывы</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'posts' %}">Кейсы</a></li>
             {% if user.is_authenticated %}
+            {% if perms.lessons.view_lesson %}
             <li class="nav-item"><a class="nav-link" href="{% url 'course' %}">Мой курс</a></li>
-            <li class="btn btn-link rounded-pill px-3"><a href="{% url 'account_logout' %}">Выйти</a></li>
             {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Войти</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'buy' %}">Купить курс</a></li>
+            {% endif %}
+            <li class="btn btn-link rounded-pill px-3"><a href="{% url 'logout' %}">Выйти</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'buy' %}">Купить курс</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Войти</a></li>
             {% endif %}
             </a></li>
           </ul>

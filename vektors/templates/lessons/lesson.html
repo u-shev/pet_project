@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
-
+{% if perms.lessons.view_lesson %}
 {% block content %}
 
 <article class="blog-post">
   <h2>{{ lesson.name }}</h2>
-  <div class="container">
+  <div class="ratio ratio-16x9">
     <iframe width="auto" height='auto'
       src="{{ lesson.video_link }}"
       frameborder="0"
@@ -35,3 +35,4 @@
 </div>
 
 {% endblock %}
+{% endif %}

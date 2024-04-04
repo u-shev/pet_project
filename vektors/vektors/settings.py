@@ -30,13 +30,6 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'cachalot',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.telegram',
-    'allauth.socialaccount.providers.vk',
-    'allauth.socialaccount.providers.yandex',
-
     'posts',
     'users',
     'feedback',
@@ -44,9 +37,9 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-ACCOUNT_EMAIL_VERIFICATION = "none"
-LOGIN_REDIRECT_URL = "home"
-ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_VERIFICATION = True
+LOGIN_REDIRECT_URL = 'course'
+LOGIN_REDIRECT_URL = 'home'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,7 +116,6 @@ AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 # Internationalization
@@ -156,8 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
     'https://127.0.0.1',
     'https://localhost',
-    'https://90.156.225.192:8000',
-    'https://dikerman.ru:8000'
+    'https://dikerman.ru'
 ]
 
 CACHES = {
@@ -166,38 +157,24 @@ CACHES = {
         'LOCATION': 'redis://redis:6379/1',
     }
 }
-
-# ALLAUTH НАСТРОЙКИ
-
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = 'course'
-
-# SOCIALACCOUNT_PROVIDERS = {
-#     'yandex': {
-#         'SCOPE': {
-#             'profile',
-#             'email',
-#         }
-#     },
-#     'telegram': {
-#         'SCOPE': {
-#             'profile',
-#             'email',
-#         }
+# CACHES = {
+#     'default': {
+#         'BACKEND': "django_redis.cache.RedisCache",
+#         'LOCATION': 'redis://127.0.0.1:6379/1',
 #     }
 # }
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'vektors'
 
-SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
 
 #CELERY И РАССЫЛКА ПИСЕМ
 
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+# CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+# CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
 
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
 
 EMAIL_HOST ='smtp.mail.ru'
 EMAIL_PORT = 2525

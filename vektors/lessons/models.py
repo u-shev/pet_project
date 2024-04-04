@@ -1,8 +1,8 @@
 from django.db import models
-from users.models import User
 
 
 class Lesson(models.Model):
+    permission_required = 'lesson.view_lesson'
     name = models.CharField(max_length=150, blank=False,
                             verbose_name='Название')
     description = models.TextField(blank=True,

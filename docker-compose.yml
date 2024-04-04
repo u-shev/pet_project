@@ -31,6 +31,20 @@ services:
     image: redis:7.0.5
     hostname: redis
 
+  celery:
+    build:
+      context: .
+    command: celery -A vektors worker -l info
+    volumes:
+      - ./vektors:/vektors
+    env_file:
+      - ./vektors/.env
+    links:
+      - redis
+    depends_on:
+      - redis
+      - database
+
   nginx:
     build: ./nginx
     restart: always
@@ -39,8 +53,12 @@ services:
     volumes:
       - media:/vektors/mediafiles
       - static:/vektors/staticfiles
+      - ./ssl/dikerman.crt:/etc/nginx/dikerman.crt
+      - ./ssl/dikerman.key:/etc/nginx/dikerman.key
+      - ./ssl/ca.crt:/etc/nginx/ca.crt
     depends_on:
       - web
+
 
 volumes:
   postgres-data:

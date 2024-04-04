@@ -1,31 +1,25 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
-{% block title %}
-    {{ title }} | {{ 'Отзывы' }}
-{% endblock %}
-
 {% block content %}
 
-{% if user.is_authenticated %}
-<div class="col-lg-6 col-xxl-4 my-5 mx-auto">
-  <div class="d-grid gap-2">
-    <button class="btn btn-outline-secondary" type="button"><a href="{% url 'create_feedback_post' %}">Оставить отзыв</a></button>
-  </div>
+{% comment %} {% if user.is_authenticated %} {% endcomment %}
+{% if perms.feedback.add_feedbackpost %}
+<div class="d-grid gap-2">
+  <a class="btn btn-outline-secondary btn-lg" href="{% url 'create_feedback_post' %}" role="button">Оставить отзыв</a>
 </div>
 
 {% endif %}
 
 {% if feedback_posts %}
 {% for feedback_post in feedback_posts %}
+<hr class="border border-secondary border-2 opacity-50">
 <article class="blog-post">
-    <p class="blog-post-meta">Автор отзыва: {{ feedback_post.name }}</a></p>
+    <p class="h5">Автор отзыва: {{ feedback_post.name }}</p>
     <p>{{ feedback_post.description }}</p>
     {% if user.is_authenticated and user == feedback_post.author %}
-    <a href="{% url 'update_feedback_post' feedback_post.id %}">{{ 'Обновить' }}</a>
-      <br>
-    <a href="{% url 'delete_feedback_post' feedback_post.id %}">{{ 'Удалить' }}</a>
-    <hr>
+    <a class="btn btn-outline-secondary btn-sm" href="{% url 'update_feedback_post' feedback_post.id %}" role="button">Обновить</a>
+    <a class="btn btn-outline-secondary btn-sm" href="{% url 'delete_feedback_post' feedback_post.id %}" role="button">Удалить</a>
     {% endif %}
 {% endfor %}
 {% endif %}

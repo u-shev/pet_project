@@ -8,3 +8,5 @@ whitenoise==6.0.0
 django-cachalot==2.6.1
 django-debug-toolbar==4.3.0
 django-redis==5.4.0
+celery[redis]==5.2.7
+celery==5.2.7

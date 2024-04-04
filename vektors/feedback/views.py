@@ -5,16 +5,13 @@ from django.contrib.messages.views import SuccessMessageMixin
 from vektors.mixins import UserLoginRequiredMixin
 from .models import FeedbackPost
 from .forms import FeedbackPostForm
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 class FeedbackPostListView(ListView):
 
     template_name = 'feedback/feedback_posts.html'
     model = FeedbackPost
     context_object_name = 'feedback_posts'
-    extra_context = {
-        'title': 'Отзывы',
-        'button_text': 'Показать',
-    }
 
 
 class FeedbackPostDetailView(UserLoginRequiredMixin,
@@ -22,15 +19,11 @@ class FeedbackPostDetailView(UserLoginRequiredMixin,
     model = FeedbackPost
     template_name = "feedback/feedback_post.html"
     context_object_name = "feedback_post"
-    extra_context = {'title': 'Отзыв',
-                     'btn_update': 'Изменить',
-                     'btn_delete': 'Удалить',
-                     }
 
 
 class FeedbackPostCreateView(UserLoginRequiredMixin,
-                     SuccessMessageMixin, CreateView):
-
+                     SuccessMessageMixin, PermissionRequiredMixin, CreateView):
+    permission_required = "feedback.add_feedbackpost"
     template_name = 'form.html'
     model = FeedbackPost
     form_class = FeedbackPostForm
@@ -52,7 +45,7 @@ class FeedbackPostUpdateView(UserLoginRequiredMixin,
     template_name = 'form.html'
     model = FeedbackPost
     form_class = FeedbackPostForm
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('feedback_posts')
     success_message = 'Отзыв изменен'
     extra_context = {
         'title': 'Изменить отзыв',
@@ -63,7 +56,7 @@ class FeedbackPostUpdateView(UserLoginRequiredMixin,
 class FeedbackPostDeleteView(UserLoginRequiredMixin,
                      SuccessMessageMixin, DeleteView):
 
-    template_name = 'feedback_posts/delete.html'
+    template_name = 'feedback/delete.html'
     model = FeedbackPost
     success_url = reverse_lazy('feedback_posts')
     success_message = 'Ваш отзыв удален'

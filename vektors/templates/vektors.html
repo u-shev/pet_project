@@ -16,23 +16,11 @@
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Сайт о векторной системе Виктора Толкачева</h1>
         <p class="lead">в прочтении Екатерины Дикерман, которая обучалась у него в 2011 году</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          {% comment %} <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a href="{% url 'about' %}">Обо мне</button> {% endcomment %}
-            {% comment %} <li class="btn btn-link rounded-pill px-3"><a href="{% url 'about' %}">Обо мне</a></li> {% endcomment %}
-          <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button">
-          Купить курс ???
-          <svg class="bi ms-1" width="20" height="20"><use xlink:href="#arrow-right-short"/></svg>
-          </button>
+          <a class="btn btn-dark btn-lg" href="{% url 'buy' %}" role="button">Купить курс</a>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
-    <div class="d-grid gap-2">
-      <button class="btn btn-outline-secondary" type="button">Купить курс ???</button>
-    </div>
-  </div>
-
   
   <main class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
@@ -105,7 +93,7 @@
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4">Купить курс можно в трех вариантах: basic, classic и VIP</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-light btn-lg px-4">Купить</button>
+          <a class="btn btn-дшпре btn-lg" href="{% url 'buy' %}" role="button">Купить курс</a>
         </div>
       </div>
   </div>

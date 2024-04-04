@@ -4,7 +4,75 @@
 
 {% block content %}
 
-<article class="blog-post">
-    <h2>Купить курс</h2>
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+  <h3 class="display-4 fw-normal text-body-emphasis">Варианты прохождения курса</h3>
+  <p class="fs-5 text-body-secondary">Вы можете выбрать наиболее оптимальный вариант обучения. Перед оплатой необходимо <a href="{% url 'create_user' %}" class="link-
+    body-emphasis">зарегистрироваться</a>. Оплачивая курс, вы подтверждаете свое согласие с <a href="{% url 'refund' %}" class="link-
+    body-emphasis">"Условиями использования и возврата"</a></p>
+</div></p>
+</div>
 
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Базовый</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">9500 р.</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li> - 9 видео встреч</li>
+            <li> - комплект диагностических материалов</li>
+            <li> - иллюстрирующие вектора примеры из фильмов, социальных сетей и книг
+            </li>
+          </ul>
+          <a class="w-100 btn btn-lg btn-outline-secondary" href="{% url 'course_about' %}" role="button">Подробнее</a>
+        </div>
+        <a class="w-100 btn btn-lg btn-secondary" href="#" role="button">Купить базовый курс</a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Стандартный</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">15000 р.</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li> - 9 видео встреч</li>
+            <li> - комплект диагностических материалов</li>
+            <li> - иллюстрирующие вектора примеры из фильмов, социальных сетей и книг
+            </li>
+            <li>- индивидуальная консультация с ведущей курса Екатериной Дикерман по уточнению  Вашего векторного состава (в течение 3 месяцев после покупки)</li>
+          </ul>
+          <a class="w-100 btn btn-lg btn-outline-secondary" href="{% url 'course_about' %}#standart" role="button">Подробнее</a>
+        </div>
+        <a class="w-100 btn btn-lg btn-secondary" href="#" role="button">Купить стандартный курс</a>
+      </div>
+    </div>
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Расширенный</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">50000 р.</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li> - 9 видео встреч</li>
+            <li> - комплект диагностических материалов</li>
+            <li> - иллюстрирующие вектора примеры из фильмов, социальных сетей и книг
+            </li>
+            <li>- индивидуальная консультация с ведущей курса Екатериной Дикерман по уточнению  Вашего векторного состава</li>
+            <li>- дополнительное видео на тему “Алгоритм выбора идеального партнера по векторной системе”</li>
+            <li>- дополнительные два диагностических теста</li>
+            <li>- вторая индивидуальная консультация с с ведущей курса Екатериной Дикерман по применению алгоритма в Вашей истории (в течение 6 месяцев с момента покупки)</li>
+
+          </ul>
+          <a class="w-100 btn btn-lg btn-outline-secondary" href="{% url 'course_about' %}#full" role="button">Подробнее</a>
+        </div>
+        <a class="w-100 btn btn-lg btn-secondary" href="#" role="button">Купить базовый курс</a>
+      </div>
+    </div>
+  </div>
+  
 {% endblock %}
