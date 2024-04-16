@@ -7,4 +7,3 @@ class LessonForm(forms.ModelForm):
     class Meta:
         model = Lesson
         fields = ('name', 'description', 'video_link')
-

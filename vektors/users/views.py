@@ -14,7 +14,6 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import login
 
 
-
 class UserCreateView(SuccessMessageMixin, UserIsNotAuthenticated, CreateView):
 
     form_class = UserForm
@@ -50,7 +49,8 @@ class UserConfirmEmailView(View):
         except (TypeError, ValueError, OverflowError, User.DoesNotExist):
             user = None
 
-        if user is not None and default_token_generator.check_token(user, token):
+        if user is not None and default_token_generator.check_token(
+          user, token):
             user.is_active = True
             user.save()
             login(request, user)

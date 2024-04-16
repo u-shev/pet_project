@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = True
-LOGIN_REDIRECT_URL = 'course'
 LOGIN_REDIRECT_URL = 'home'
 
 MIDDLEWARE = [
@@ -77,22 +76,22 @@ WSGI_APPLICATION = 'vektors.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.getenv('POSTGRES_HOST'),
-        'NAME': os.getenv('POSTGRES_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': os.getenv('POSTGRES_HOST'),
+#         'NAME': os.getenv('POSTGRES_DB'),
+#         'USER': os.getenv('POSTGRES_USER'),
+#         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -151,12 +150,12 @@ CSRF_TRUSTED_ORIGINS = [
     'https://dikerman.ru'
 ]
 
-CACHES = {
-    'default': {
-        'BACKEND': "django_redis.cache.RedisCache",
-        'LOCATION': 'redis://redis:6379/1',
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': "django_redis.cache.RedisCache",
+#         'LOCATION': 'redis://redis:6379/1',
+#     }
+# }
 # CACHES = {
 #     'default': {
 #         'BACKEND': "django_redis.cache.RedisCache",
@@ -167,16 +166,16 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'vektors'
 
 
-#CELERY И РАССЫЛКА ПИСЕМ
+# CELERY И РАССЫЛКА ПИСЕМ
 
-BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
-CELERY_BROKER_URL = 'redis://redis:6379/0'
-CELERY_RESULT_BACKEND = "redis://redis:6379/0"
-# CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-# CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+# CELERY_BROKER_URL = 'redis://redis:6379/0'
+# CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
 
 
-EMAIL_HOST ='smtp.mail.ru'
+EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

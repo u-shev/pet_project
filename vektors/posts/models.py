@@ -26,7 +26,7 @@ class Picture(models.Model):
                             verbose_name='Название')
     picture = models.FileField(upload_to='media/upload/main/',
                                verbose_name='Выберите картинку')
-    
+
     class Meta:
         verbose_name = 'Картинка для оформления'
         verbose_name_plural = 'Картинки для оформления'

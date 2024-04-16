@@ -6,9 +6,13 @@
 
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
   <h3 class="display-4 fw-normal text-body-emphasis">Варианты прохождения курса</h3>
-  <p class="fs-5 text-body-secondary">Вы можете выбрать наиболее оптимальный вариант обучения. Перед оплатой необходимо <a href="{% url 'create_user' %}" class="link-
-    body-emphasis">зарегистрироваться</a>. Оплачивая курс, вы подтверждаете свое согласие с <a href="{% url 'refund' %}" class="link-
+  {% if not user.is_authenticated %}
+  <p class="fs-5 text-body-secondary">Перед оплатой необходимо <a href="{% url 'create_user' %}" class="link-
+    body-emphasis">зарегистрироваться</a> или <a href="{% url 'login' %}" class="link-body-emphasis">войти</a>.
+    {% endif %}
+    Оплачивая курс, вы подтверждаете свое согласие с <a href="{% url 'refund' %}" class="link-
     body-emphasis">"Условиями использования и возврата"</a></p>
+    
 </div></p>
 </div>
 
@@ -28,8 +32,11 @@
           </ul>
           <a class="w-100 btn btn-lg btn-outline-secondary" href="{% url 'course_about' %}" role="button">Подробнее</a>
         </div>
-        <a class="w-100 btn btn-lg btn-secondary" href="#" role="button">Купить базовый курс</a>
+        <a class="w-100 btn btn-lg btn-secondary" href="{% url 'pay_for_base' %}" role="button" button_type="submit">Купить базовый курс</a>
       </div>
+    </div>
+    <a class="w-100 btn btn-lg btn-secondary" href="{% url 'change_group' %}" role="button" button_type="submit">Сменить группу</a>
+  </div>
     </div>
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
@@ -47,7 +54,7 @@
           </ul>
           <a class="w-100 btn btn-lg btn-outline-secondary" href="{% url 'course_about' %}#standart" role="button">Подробнее</a>
         </div>
-        <a class="w-100 btn btn-lg btn-secondary" href="#" role="button">Купить стандартный курс</a>
+        <a class="w-100 btn btn-lg btn-secondary" href="{% url 'pay_for_standart' %}" role="button">Купить стандартный курс</a>
       </div>
     </div>
     <div class="col">
@@ -70,7 +77,7 @@
           </ul>
           <a class="w-100 btn btn-lg btn-outline-secondary" href="{% url 'course_about' %}#full" role="button">Подробнее</a>
         </div>
-        <a class="w-100 btn btn-lg btn-secondary" href="#" role="button">Купить базовый курс</a>
+        <a class="w-100 btn btn-lg btn-secondary" href="{% url 'pay_for_full' %}" role="button">Купить расширенный курс</a>
       </div>
     </div>
   </div>

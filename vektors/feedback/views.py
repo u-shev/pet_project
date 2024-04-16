@@ -7,6 +7,7 @@ from .models import FeedbackPost
 from .forms import FeedbackPostForm
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
+
 class FeedbackPostListView(ListView):
 
     template_name = 'feedback/feedback_posts.html'
@@ -15,14 +16,17 @@ class FeedbackPostListView(ListView):
 
 
 class FeedbackPostDetailView(UserLoginRequiredMixin,
-                     SuccessMessageMixin, DetailView):
+                             SuccessMessageMixin,
+                             DetailView):
     model = FeedbackPost
     template_name = "feedback/feedback_post.html"
     context_object_name = "feedback_post"
 
 
 class FeedbackPostCreateView(UserLoginRequiredMixin,
-                     SuccessMessageMixin, PermissionRequiredMixin, CreateView):
+                             SuccessMessageMixin,
+                             PermissionRequiredMixin,
+                             CreateView):
     permission_required = "feedback.add_feedbackpost"
     template_name = 'form.html'
     model = FeedbackPost
@@ -40,7 +44,7 @@ class FeedbackPostCreateView(UserLoginRequiredMixin,
 
 
 class FeedbackPostUpdateView(UserLoginRequiredMixin,
-                     SuccessMessageMixin, UpdateView):
+                             SuccessMessageMixin, UpdateView):
 
     template_name = 'form.html'
     model = FeedbackPost
@@ -54,7 +58,7 @@ class FeedbackPostUpdateView(UserLoginRequiredMixin,
 
 
 class FeedbackPostDeleteView(UserLoginRequiredMixin,
-                     SuccessMessageMixin, DeleteView):
+                             SuccessMessageMixin, DeleteView):
 
     template_name = 'feedback/delete.html'
     model = FeedbackPost
@@ -65,4 +69,3 @@ class FeedbackPostDeleteView(UserLoginRequiredMixin,
         'title': 'Удалить отзыв',
         'button_text': 'Да, удалить',
     }
-

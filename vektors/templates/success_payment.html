@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+    <h1 class="my-4">Оплата прошла успешно!
+        Можете перейти к <a href="{% url 'course' %}" class="link-
+        body-emphasis">своему курсу.</a>
+    </h1>
+{% endblock %}

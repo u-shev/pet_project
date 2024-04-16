@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.core.exceptions import PermissionDenied
 
 
 class UserLoginRequiredMixin(LoginRequiredMixin):
@@ -22,16 +21,6 @@ class UserIsNotAuthenticated(UserPassesTestMixin):
         if self.request.user.is_authenticated:
             messages.info(self.request, 'Вы уже авторизованы.')
         return self.test_func
-        
+
     def handle_no_permission(self):
         return redirect('home')
-
-# class UserIsNotAuthenticated(UserPassesTestMixin):
-#     def test_func(self):
-#         return self.request.user.is_authenticated
-    
-#     def get_permission_denied_message(self):
-#         messages.info(self.request, 'Вы уже авторизованы.')
-
-#     def handle_no_permission(self):
-#         return redirect(reverse_lazy('home'))
